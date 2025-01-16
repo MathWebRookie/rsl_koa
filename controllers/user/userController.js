@@ -1,21 +1,6 @@
 const userService = require("../../services/userService");
 
 class UserController {
-  // cs
-  async getRequest(ctx) {
-    try {
-      ctx.status = 200;
-      const data = await userService.getRequestdata();
-      ctx.body = {
-        status: ctx.response.status,
-        success: true,
-        data,
-      };
-    } catch (error) {
-      ctx.throw(500, error.message);
-    }
-  }
-
   // 创建用户
   async createUser(ctx) {
     try {
@@ -29,6 +14,19 @@ class UserController {
       };
     } catch (error) {
       ctx.throw(400, error.message);
+    }
+  }
+
+  // 删除用户
+  async deleteUser(ctx) {
+    try {
+      const users = await userService.deleteUser();
+      ctx.body = {
+        success: true,
+        data: users,
+      };
+    } catch (error) {
+      ctx.throw(500, error.message);
     }
   }
 

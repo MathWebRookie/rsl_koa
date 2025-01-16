@@ -1,11 +1,6 @@
 const User = require('../models/userModel');
 
 class UserService {
-    // cs
-    async getRequestdata() {
-        return await User.getRequestmodel();
-    }
-
     // 创建用户
     async createUser(userData) {
         return await User.create(userData);
@@ -13,12 +8,12 @@ class UserService {
 
     // 获取所有用户
     async getUsers() {
-        return await User.find().select('-password');
+        return await User.find().select('-name');
     }
 
     // 根据ID获取用户
     async getUserById(id) {
-        return await User.findById(id).select('-password');
+        return await User.findById(id).select('-name');
     }
 
     // 更新用户
@@ -36,7 +31,7 @@ class UserService {
 
     // 根据条件查找用户
     async findUsers(query) {
-        return await User.find(query).select('-password');
+        return await User.find(query).select('-name');
     }
 }
 
