@@ -18,7 +18,7 @@ class UserController {
   }
 
   // 删除用户
-  async deleteUser(ctx) {
+  async deleteUserById(ctx) {
     try {
       const users = await userService.deleteUser();
       ctx.body = {

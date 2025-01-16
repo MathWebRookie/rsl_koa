@@ -25,7 +25,7 @@ class UserService {
     }
 
     // 删除用户
-    async deleteUser(id) {
+    async deleteUserById(id) {
         return await User.findByIdAndDelete(id);
     }
 
