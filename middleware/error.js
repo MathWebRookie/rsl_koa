@@ -6,6 +6,7 @@ module.exports = () => {
             ctx.status = err.status || 500;
             ctx.body = {
                 success: false,
+                status: ctx.status,
                 message: err.message || 'Internal server error',
                 ...(process.env.NODE_ENV === 'development' && { stack: err.stack })
             };

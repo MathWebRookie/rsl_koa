@@ -39,6 +39,9 @@ app.use(async (ctx, next) => {
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
+// error
+const error = require("./middleware/error.js");
+app.use(error())
 
 // routes
 app.use(index.routes(), index.allowedMethods())

@@ -4,9 +4,11 @@ const userController = require('../controllers/user/userController');
 router.prefix('/users')
 
 // 获取所有用户信息
-router.get('/', userController.getUsers)
+router.get('/getAllUsers', userController.getUsers)
 // 新增用户信息
-router.post('/', userController.createUser);
+router.post('/createUser', userController.createUser);
+// 修改用户信息
+router.post('/updateUser', userController.updateUser);
 // 获取id用户信息
 router.get('/:id', userController.getUserById);
 // 删除id用户信息

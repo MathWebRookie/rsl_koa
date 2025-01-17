@@ -5,15 +5,14 @@ class UserController {
   async createUser(ctx) {
     try {
       const userData = ctx.request.body;
-      console.log(userData);
-      const user = await userService.createUser(userData);
-      ctx.status = 201;
+      await userService.createUser(userData);
       ctx.body = {
         success: true,
-        data: user,
+        code: 200,
+        data: '用户创建成功',
       };
-    } catch (error) {
-      ctx.throw(400, error.message);
+    } catch (error) {    
+      ctx.throw(500, error.message);
     }
   }
 
@@ -36,6 +35,8 @@ class UserController {
       const users = await userService.getUsers();
       ctx.body = {
         success: true,
+        code: 200,
+        // code: ctx.response.status,
         data: users,
       };
     } catch (error) {
