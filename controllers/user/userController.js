@@ -5,6 +5,7 @@ class UserController {
   async createUser(ctx) {
     try {
       const userData = ctx.request.body;
+      // const { type, url, params, headers } = ctx.request.body;
       await userService.createUser(userData);
       ctx.body = {
         success: true,
@@ -35,8 +36,7 @@ class UserController {
       const users = await userService.getUsers();
       ctx.body = {
         success: true,
-        code: 200,
-        // code: ctx.response.status,
+        code: ctx.response.status,
         data: users,
       };
     } catch (error) {

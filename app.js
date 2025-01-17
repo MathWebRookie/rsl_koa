@@ -32,6 +32,12 @@ app.use(views(__dirname + '/views', {
   extension: 'pug'
 }))
 
+app.use(async (ctx, next) => {
+  ctx.body = { message: 'Hello, World!' };
+  // ctx.response.status 会被自动设置为 200
+  await next()
+});
+
 // logger
 app.use(async (ctx, next) => {
   const start = new Date()
